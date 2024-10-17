@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Operations: Rotate and Find Maximum</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h2 {
+        margin-top: 40px;
+      }
+      form {
+        margin: 0 auto;
+        width: 300px;
+      }
+      label,
+      input {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      input[type="submit"] {
+        padding: 8px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      .output {
+        margin-top: 10px;
+      }
+      .logincal {
+        text-align: center;
+        /* margin-top: 40px; */
+        height: 50%;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Array Operations: Rotate and Find Maximum (SET-3)</h1>
+
+    <!-- Section for Rotating an Array -->
+    <h2>Rotate an Array</h2>
+    <form id="rotateArrayForm">
+      <label for="rotateArrayInput">Enter numbers (comma separated):</label>
+      <input
+        type="text"
+        id="rotateArrayInput"
+        name="rotateArrayInput"
+        required
+      />
+
+      <label for="rotateSteps">Enter number of steps (k):</label>
+      <input type="number" id="rotateSteps" name="rotateSteps" required />
+
+      <input type="submit" value="Rotate Array" />
+      <div class="output">
+        <label for="rotateOutput">Output:</label>
+        <input type="text" id="rotateOutput" name="rotateOutput" readonly />
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("rotateArrayForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const arrayInput = document
+            .getElementById("rotateArrayInput")
+            .value.split(",")
+            .map(Number);
+          const k = parseInt(document.getElementById("rotateSteps").value);
+          const rotatedArray = rotateArray(arrayInput, k);
+          document.getElementById("rotateOutput").value =
+            rotatedArray.join(", ");
+        });
+
+      function rotateArray(nums, k) {
+        const n = nums.length;
+        k = k % n; // To handle k greater than array length
+        return nums.slice(-k).concat(nums.slice(0, n - k));
+      }
+    </script>
+
+    <!-- Section for Finding the Maximum Element -->
+    <h2>Find the Maximum Element</h2>
+    <form id="maxElementForm">
+      <label for="maxArrayInput">Enter numbers (comma separated):</label>
+      <input type="text" id="maxArrayInput" name="maxArrayInput" required />
+
+      <input type="submit" value="Find Maximum" />
+      <div class="output">
+        <label for="maxOutput">Maximum Element:</label>
+        <input type="text" id="maxOutput" name="maxOutput" readonly />
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("maxElementForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const arrayInput = document
+            .getElementById("maxArrayInput")
+            .value.split(",")
+            .map(Number);
+          const maxElement = Math.max(...arrayInput);
+          document.getElementById("maxOutput").value = maxElement;
+        });
+    </script>
+    <a
+      class="logincal"
+      href="https://rahul-vijaykumar-kulkarni.github.io/Login-based-calculator/"
+      >CLick to access Login Based Login-based-calculator
+      <img class="logincal" src="./images/login cal.png" alt="login cal" />
+    </a>
+  </body>
+</html>
